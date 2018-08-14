@@ -1,7 +1,7 @@
 pipeline {
          agent any
          stages {
-                 stage('Code Build') {
+                 stage('Pull Code from Git') {
                  steps {
                      echo 'Code Build Stage'
                  }
@@ -11,14 +11,14 @@ pipeline {
                     input('Do you want to proceed?')
                  }
                  }
-                 stage('Deployment') {
+                 stage('Dev Deployment') {
                  when {
                        not {
                             branch "master"
                        }
                  }
                  steps {
-                       echo "Hello"
+                       echo "Dev Deployment Successful!!"
                  }
                  }
                  stage('Testing') {
@@ -36,5 +36,15 @@ pipeline {
                            }
                            }
                            }
+                 stage('Prod Deployment') {
+                 when {
+                       not {
+                            branch "master"
+                       }
+                 }
+                 steps {
+                       echo "Production Deployment Successful!!"
+                 }
+                 }
               }
 }
