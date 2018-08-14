@@ -7,15 +7,15 @@ pipeline {
                     withSonarQubeEnv('Sonar') {
                     // requires SonarQube Scanner for Maven 3.2+
                     bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-                           }
-                      }         
+                        }
+                     }         
                  }
                  stage('Code Build') {
-                 steps {
+                 steps     {
                        input('Do you want to proceed with build & war creation?')
                        bat 'mvn clean package'
                        echo "war creation successful!!"
-                 }
+                           }
                  }
                  stage('Dev Deployment') {
                  steps {
@@ -24,20 +24,16 @@ pipeline {
                        bat 'RENAME Pipeline-0.0.1-SNAPSHOT.war Pipeline.war'
                        bat 'copy C:\\Users\\330406\\.jenkins\\workspace\\Job2\\Pipeline\\target\\Pipeline.war D:\\Software\\apache-tomee-plus-7.0.2\\webapps\\'
                        echo "Dev Deployment Successful!!"
-                 }
+                           }
                  }
                  stage('Testing') {
                  steps {
-                          }
+                         echo "Testing Successful!!"
+                           }
                  stage('Prod Deployment') {
-                 when {
-                       not {
-                            branch "master"
-                       }
-                 }
                  steps {
                        echo "Production Deployment Successful!!"
+                           }
                  }
-                 }
-              }
+         }
 }
