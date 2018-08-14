@@ -30,6 +30,7 @@ pipeline {
                  steps {
                          echo "Testing Successful!!"
                            }
+                 }
                  stage('Prod Deployment') {
                  steps {
                        echo "Production Deployment Successful!!"
