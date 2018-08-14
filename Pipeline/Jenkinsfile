@@ -13,6 +13,7 @@ pipeline {
                  stage('Code Build') {
                  steps     {
                        input('Do you want to proceed with build & war creation?')
+                       bat 'cd C:\\Users\\330406\\.jenkins\\workspace\\Pipeline\\Pipeline\\'
                        bat 'mvn clean package'
                        echo "war creation successful!!"
                            }
