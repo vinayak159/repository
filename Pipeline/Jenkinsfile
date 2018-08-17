@@ -19,10 +19,10 @@ pipeline {
                           // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
                           // Maven settings and global settings can also be defined in Jenkins Global Tools Configuration
                           mavenSettingsConfig: 'mvn',
-                          mavenLocalRepo: 'C:\\Users\\330406\\.jenkins\\workspace\\Pipeline') {
+                          mavenLocalRepo: 'C:\\Users\\330406\\.m2\\repository') {
 
                            // Run the maven build
-                           bat "mvn clean install"
+                           bat "mvn clean package"
 
                       }   
                           
